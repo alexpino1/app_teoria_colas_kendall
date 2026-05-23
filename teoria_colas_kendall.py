@@ -479,7 +479,7 @@ class App(tk.Tk):
 
         # Botón calcular
         tk.Button(
-            parent, text="▶  CALCULAR", font=FONT_HEAD,
+            parent, text="CALCULAR", font=FONT_HEAD,
             bg=ACCENT, fg=TEXT, bd=0, cursor="hand2",
             activebackground="#2EA043", activeforeground=TEXT,
             pady=10, command=self._calcular
@@ -487,7 +487,7 @@ class App(tk.Tk):
 
         # Botón limpiar
         tk.Button(
-            parent, text="✕  Limpiar", font=FONT_SMALL,
+            parent, text="Limpiar", font=FONT_SMALL,
             bg=CARD, fg=TEXT_DIM, bd=0, cursor="hand2",
             activebackground=BORDER, activeforeground=TEXT,
             pady=6, command=self._limpiar
