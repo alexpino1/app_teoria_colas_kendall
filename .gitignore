@@ -157,3 +157,4 @@ Desktop.ini
 *.njsproj
 *.sln
 *.sw?
+.atl/

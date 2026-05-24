@@ -13,6 +13,7 @@ def main():
 
     # 0. Verificar si el archivo ejecutable de salida está bloqueado (en ejecución)
     output_exe = os.path.join("dist", "teoria_colas_kendall.exe")
+
     if os.path.exists(output_exe):
         try:
             # Intentar abrir el archivo en modo exclusivo de escritura
@@ -83,9 +84,9 @@ VSVersionInfo(
 
     # 3. Construir el comando de PyInstaller
     # Detectar el ejecutable de pyinstaller en el entorno virtual o global
-    pyinstaller_bin = os.path.join(".venv", "Scripts", "pyinstaller.exe")
+    pyinstaller_bin = os.path.join("venv", "Scripts", "pyinstaller.exe")
     if not os.path.exists(pyinstaller_bin):
-        pyinstaller_bin = "pyinstaller" # intentar global
+        pyinstaller_bin = "pyinstaller"  # fall back to global
         
     print(f"Usando PyInstaller: '{pyinstaller_bin}'")
 
@@ -112,7 +113,7 @@ VSVersionInfo(
     else:
         print("No se detectó ningún archivo .ico en la raíz. Compilando con el icono por defecto.")
 
-    cmd.append("teoria_colas_kendall.py")
+    cmd.append("main.py")
 
     print("\nEjecutando compilación...")
     print("Comando:", " ".join(cmd))
