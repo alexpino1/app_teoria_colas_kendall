@@ -3,7 +3,7 @@
 Una aplicación de escritorio interactiva escrita en **Python y Tkinter** para calcular, comparar y graficar de forma sencilla los modelos de la Teoría de Colas más utilizados en ingeniería, investigación de operaciones y planificación de capacidad.
 
 <p align="center">
-  <img src="calculo_png.png" alt="Vista previa de la calculadora" width="100">
+  <img src="assets/calculo_png.png" alt="Vista previa de la calculadora" width="100">
 </p>
 
 ---

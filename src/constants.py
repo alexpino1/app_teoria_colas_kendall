@@ -1,0 +1,19 @@
+BG         = "#0D1117"
+CARD       = "#161B22"
+ACCENT     = "#238636"
+ACCENT2    = "#1F6FEB"
+TEXT       = "#E6EDF3"
+TEXT_DIM   = "#8B949E"
+BORDER     = "#30363D"
+RED        = "#DA3633"
+YELLOW     = "#D29922"
+GREEN      = "#3FB950"
+PURPLE     = "#8957E5"
+CYAN       = "#39D353"
+
+FONT_TITLE  = ("Consolas", 22, "bold")
+FONT_HEAD   = ("Consolas", 13, "bold")
+FONT_LABEL  = ("Consolas", 11)
+FONT_ENTRY  = ("Consolas", 12)
+FONT_RESULT = ("Consolas", 12)
+FONT_SMALL  = ("Consolas", 10)
