@@ -11,6 +11,13 @@ import math
 import threading
 from _pydecimal import ROUND_UP
 
+# --- Importar control de versión modular ---
+try:
+    from version import VERSION_STR, APP_TITLE
+except ImportError:
+    VERSION_STR = "1.0.0"
+    APP_TITLE = "Teoría de Colas - Notación de Kendall"
+
 # ─── Intentar importar matplotlib ───────────────────────────────────────────
 try:
     import matplotlib
@@ -394,19 +401,29 @@ MODELOS = {
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Teoría de Colas — Notación de Kendall")
+        self.title(f"{APP_TITLE} v{VERSION_STR}")
         self.configure(bg=BG)
         self.geometry("1280x820")
         self.minsize(960, 680)
         self.resizable(True, True)
         self._resultado = None
         
-        # Pre-inicializar atributos que se crean en _build_right
-        # para evitar AttributeError si _build_left los referencia antes
         self._lbl_modelo  = None
         self._lbl_kendall = None
         self._lbl_detalle = None
         self._build_ui()
+        self.protocol("WM_DELETE_WINDOW", self._on_closing)
+
+    def _on_closing(self):
+        if MATPLOTLIB_OK:
+            try:
+                plt.close('all')
+            except Exception:
+                pass
+        self.quit()
+        self.destroy()
+        import sys
+        sys.exit(0)
 
     # ── UI principal ──────────────────────────────────────────
     def _build_ui(self):
@@ -415,7 +432,7 @@ class App(tk.Tk):
         hdr.pack(fill="x", padx=24)
         tk.Label(hdr, text=" TEORÍA DE COLAS ", font=FONT_TITLE,
                  bg=BG, fg=ACCENT).pack(side="left")
-        tk.Label(hdr, text="Notación de Kendall  ",
+        tk.Label(hdr, text=f"Notación de Kendall v{VERSION_STR}  ",
                  font=FONT_LABEL, bg=BG, fg=TEXT_DIM).pack(side="left", padx=18)
 
         sep = tk.Frame(self, bg=BORDER, height=1)

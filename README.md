@@ -1,6 +1,6 @@
 # Calculadora de Teoría de Colas (Notación de Kendall)
 
-Una aplicación de escritorio premium e interactiva escrita en **Python y Tkinter** para calcular, comparar y graficar de forma sencilla los modelos de la Teoría de Colas más utilizados en ingeniería, investigación de operaciones y planificación de capacidad.
+Una aplicación de escritorio interactiva escrita en **Python y Tkinter** para calcular, comparar y graficar de forma sencilla los modelos de la Teoría de Colas más utilizados en ingeniería, investigación de operaciones y planificación de capacidad.
 
 <p align="center">
   <img src="calculo_png.png" alt="Vista previa de la calculadora" width="100">
@@ -32,6 +32,50 @@ Ejecuta el script principal usando el intérprete del entorno virtual:
 
 ---
 
+## Compilación con PyInstaller
+
+El proyecto incluye un flujo de compilación automatizado para generar un archivo ejecutable (`.exe`) en Windows, sin requerir dependencias externas en el entorno de ejecución de destino.
+
+### Ejecución del proceso de construcción
+La compilación se realiza ejecutando el script `build.py` desde el entorno virtual:
+
+```bash
+# En Windows (PowerShell/CMD):
+.venv\Scripts\python build.py
+
+# En sistemas Unix/Linux/macOS (genérico):
+.venv/bin/python build.py
+```
+
+### Funciones del script de construcción (`build.py`):
+1. **Generación dinámica de metadatos**: Lee la versión y los datos descriptivos definidos en `version.py` para construir un archivo de recursos de Windows (`VSVersionInfo`).
+2. **Empaquetado**: Invoca a `pyinstaller` con parámetros de distribución optimizados (`--onefile` para empaquetado en un único archivo y `--windowed` para omitir la terminal del sistema en tiempo de ejecución).
+3. **Limpieza de temporales**: Elimina de forma automática los archivos y directorios de compilación intermedios generados durante el build.
+
+El ejecutable final se genera en la ruta relativa `dist/teoria_colas_kendall.exe`.
+
+---
+
+## Administración de Versiones
+
+La información de versión y los metadatos globales del software están centralizados en el módulo `version.py`:
+
+```python
+MAJOR = 1
+MINOR = 0
+PATCH = 0
+
+VERSION_INFO = (MAJOR, MINOR, PATCH)
+VERSION_STR = f"{MAJOR}.{MINOR}.{PATCH}"
+
+APP_TITLE = "Teoría de Colas - Notación de Kendall"
+APP_DESCRIPTION = "Aplicación interactiva para el cálculo, simulación y análisis de la Teoría de Colas."
+AUTHOR = "Maluma Lovers"
+COPYRIGHT = "Copyright (c) 2026 Maluma Lovers"
+```
+
+---
+
 ## Modelos de Kendall Soportados
 
 La aplicación cuenta con un potente motor matemático de cálculo para los siguientes modelos estándar:
@@ -52,7 +96,7 @@ La aplicación cuenta con un potente motor matemático de cálculo para los sigu
 
 ## Características Destacadas
 
-*   **Diseño Oscuro Premium (Aesthetics-First):** Interfaz moderna inspirada en temas modernos de Github, utilizando una combinación curada de grises oscuros, acentos verdes, azules y cianes que evitan la fatiga visual.
+*   **Diseño Oscuro (Aesthetics-First):** Interfaz moderna inspirada en temas modernos de Github, utilizando una combinación curada de grises oscuros, acentos verdes, azules y cianes que evitan la fatiga visual.
 *   **Métricas de Rendimiento Clave en Tiempo Real:** Visualización instantánea de:
     *   $\rho$ (Factor de utilización del sistema)
     *   $P_0$ (Probabilidad de sistema vacío)
