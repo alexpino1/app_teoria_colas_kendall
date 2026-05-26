@@ -1,3 +1,4 @@
 matplotlib>=3.5.0
 numpy>=1.21.0
+PyQt6>=6.4.0
 pyinstaller>=6.0.0
