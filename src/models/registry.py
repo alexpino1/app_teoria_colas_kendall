@@ -6,9 +6,6 @@ parameter definitions, and calculator function.
 from .markovian import (
     calcular_mm1,
     calcular_mmc,
-    calcular_mm1k,
-    calcular_mmck,
-    calcular_mm1kk,
 )
 from .general import (
     calcular_md1,
@@ -38,40 +35,6 @@ MODELOS = {
         "fn": lambda p: calcular_mmc(p["lambda"], p["mu"], int(p["c"])),
         "kendall": "M / M / c / ∞ / ∞ / FCFS",
         "detalle": "Erlang-C",
-    },
-    "M/M/1/K": {
-        "desc": "Un servidor · capacidad máxima K (pérdidas)",
-        "params": [
-            ("λ  (tasa llegada)", "lambda"),
-            ("μ  (tasa servicio)", "mu"),
-            ("K  (capacidad del sistema)", "K", "int"),
-        ],
-        "fn": lambda p: calcular_mm1k(p["lambda"], p["mu"], int(p["K"])),
-        "kendall": "M / M / 1 / K / ∞ / FCFS",
-        "detalle": "Clientes rechazados si sistema lleno",
-    },
-    "M/M/c/K": {
-        "desc": "c servidores · capacidad máxima K",
-        "params": [
-            ("λ  (tasa llegada)", "lambda"),
-            ("μ  (tasa servicio)", "mu"),
-            ("c  (servidores)", "c", "int"),
-            ("K  (capacidad total  ≥ c)", "K", "int"),
-        ],
-        "fn": lambda p: calcular_mmck(p["lambda"], p["mu"], int(p["c"]), int(p["K"])),
-        "kendall": "M / M / c / K / ∞ / FCFS",
-        "detalle": "Extensión general con pérdidas",
-    },
-    "M/M/1/K/K": {
-        "desc": "Población finita K · un servidor (modelo cerrado)",
-        "params": [
-            ("λ  (tasa llegada individual)", "lambda"),
-            ("μ  (tasa servicio)", "mu"),
-            ("K  (tamaño de la población)", "K", "int"),
-        ],
-        "fn": lambda p: calcular_mm1kk(p["lambda"], p["mu"], int(p["K"])),
-        "kendall": "M / M / 1 / K / K / FCFS",
-        "detalle": "Fuente finita — máquinas en reparación",
     },
     "M/D/1": {
         "desc": "Un servidor · servicio determinístico (tiempo fijo)",

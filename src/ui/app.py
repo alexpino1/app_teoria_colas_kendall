@@ -501,9 +501,6 @@ class StagePanel(QWidget):
     _KICKERS = {
         "M/M/1":   ("Cover Story",       "Un servidor,<br><i style='color:{h}'>mil corazones.</i>"),
         "M/M/c":   ("Tour Mundial",       "Equipo de<br><i style='color:{h}'><b>c</b> servidores.</i>"),
-        "M/M/1/K": ("Capacidad Limitada", "Solo caben<br><i style='color:{h}'><b>K</b> en la fila.</i>"),
-        "M/M/c/K": ("VIP Lounge",         "Cupo cerrado,<br><i style='color:{h}'>energía abierta.</i>"),
-        "M/M/1/K/K":("Fuente Finita",     "Población<br><i style='color:{h}'>de tamaño K.</i>"),
         "M/D/1":   ("Determinista",        "Tiempo fijo,<br><i style='color:{h}'>swing exacto.</i>"),
         "M/G/1":   ("Servicio General",    "Una varianza<br><i style='color:{h}'>que enamora.</i>"),
         "M/Ek/1":  ("Erlang",              "k fases,<br><i style='color:{h}'>un solo flow.</i>"),
