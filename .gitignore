@@ -158,3 +158,6 @@ Desktop.ini
 *.sln
 *.sw?
 .atl/
+*.txt
+
+!requirements.txt
