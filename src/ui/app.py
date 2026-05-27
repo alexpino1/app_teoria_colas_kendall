@@ -4,6 +4,7 @@ Editorial magazine aesthetic · Negro · Crema · Magenta
 """
 
 import math
+import os
 
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
@@ -12,7 +13,7 @@ from PyQt6.QtWidgets import (
     QHeaderView, QMessageBox,
 )
 from PyQt6.QtCore import Qt, QTimer, pyqtSignal
-from PyQt6.QtGui import QFont, QColor, QPainter, QPen, QFontMetrics
+from PyQt6.QtGui import QFont, QColor, QPainter, QPen, QFontMetrics, QIcon
 
 from src.models.registry import MODELOS
 
@@ -20,6 +21,16 @@ try:
     from version import VERSION_STR
 except ImportError:
     VERSION_STR = "2.0"
+
+import sys
+
+def get_resource_path(relative_path):
+    """Obtiene la ruta absoluta a un recurso, funciona en dev y en PyInstaller."""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    return os.path.join(base_path, relative_path)
 
 try:
     import matplotlib
@@ -1215,6 +1226,11 @@ class App(QMainWindow):
         self.setWindowTitle(f"PAPI COLAS · Teoría de Colas · v{VERSION_STR}")
         self.resize(1280, 820)
         self.setMinimumSize(960, 680)
+
+        # Cargar el icono de la ventana de PyQt6
+        icon_path = get_resource_path(os.path.join("assets", "icon.png"))
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
 
         root = QWidget()
         self.setCentralWidget(root)
